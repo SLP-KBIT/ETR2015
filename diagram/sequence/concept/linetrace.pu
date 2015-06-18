@@ -1,0 +1,72 @@
+@startuml linetrace.png
+hide footbox
+
+' Actor
+actor       競技者                   as Player
+' Boundly
+participant UI                       as UI
+participant "SelectMenu:Menu"        as SelectMenu
+participant "ExecMenu:Menu"          as ExecMenu
+participant "RunMode:Mode"           as RunMode
+' Cntroller
+participant Runner                   as Runner
+participant RunStrategy              as RunStrategy
+participant RunMethod                as RunMethod
+participant RunStyle                 as RunStyle
+' Entity
+participant EV3                      as EV3
+participant "RunMotor:Motor"         as RunMotor
+participant "LighnertSensor:Sensor"  as LightSensor
+
+Player -> UI
+activate Player
+deactivate Player
+activate UI
+  UI  -> SelectMenu : select()
+  UI <-- SelectMenu : selectedMenu
+  activate SelectMenu
+  deactivate SelectMenu
+  UI  -> ExecMenu : execMenu(this.selectedMenu)
+  activate ExecMenu
+    ExecMenu  -> Runner : run()
+    activate Runner
+      Runner  -> EV3 : << new >>
+      activate EV3
+        Runner <-- EV3 : ev3
+        EV3  -> LightSensor : << new >>
+        activate LightSensor
+          EV3 <-- LightSensor : LightSensor
+        deactivate LightSensor
+        EV3  -> RunMotor : << new >>
+        activate RunMotor
+          EV3 <-- RunMotor : leftmotor, rightmotor
+          Runner -> RunStrategy : exec(ev3)
+          activate RunStrategy
+            loop
+              RunStrategy  -> RunStyle : transform()
+              activate RunStyle
+              deactivate RunStyle
+              RunStrategy  -> RunMethod : calcTreshold()
+              activate RunMethod
+                RunStrategy <-- RunMethod : turn
+                RunStrategy  -> RunMethod : execRun(turn, speed)
+                RunMethod  -> EV3 : forword(turn, speed)
+                EV3  -> RunMotor : leftMotor.setSpeed(speed - turn)
+                EV3 <-- RunMotor
+                EV3  -> RunMotor : writeMotor.setSpeed(speed + turn)
+                EV3 <-- RunMotor
+                RunMethod <-- EV3
+              deactivate RunMotor
+            end
+          deactivate RunMethod
+          RunStrategy <-- RunMethod
+        deactivate RunStrategy
+      deactivate EV3
+      Runner <-- RunStrategy
+    deactivate Runner
+    ExecMenu <-- Runner
+  deactivate ExecMenu
+  UI <-- ExecMenu
+deactivate UI
+
+@enduml

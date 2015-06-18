@@ -1,0 +1,71 @@
+@startuml ev3.png
+
+top to bottom direction
+object "ロボット" as robo
+
+object "ev3:ロボット" as ev3
+  '------ devise
+  object "デバイス" as devise
+  devise : is_enabled = false
+  devise : check_status() : boolean
+    '------ output interfaces
+    object "出力デバイス:デバイス" as output
+    output : output_value()
+      '------ moter
+      object "モータ:出力デバイス" as moter
+      moter : turn_direction = '+'
+      moter : output_value(value)
+        object "移動モータ:モータ" as move
+        move : move_forword(speed, turn)
+        move : move_backword(speed, turn)
+        object "尻尾モータ:モータ" as tail
+        tail : toggle_tail()
+      '------ other
+      object "画面:出力デバイス" as display
+      output : output_value(x, y, string)
+      object "スピーカ:出力デバイス" as speaker
+      output : output_value(time, tone, volume=50)
+    '------ input interfaces
+    object "入力デバイス:デバイス" as input
+    input : input_value()
+      object "センサー:入力デバイス" as censor
+      censor : input_value()
+      object "光センサ" as light
+      light : input_value()
+      object "ジャイロセンサ" as jyro
+      jyro : input_value()
+      object "ソナーセンサ" as sonar
+      sonar : input_value()
+      object "タッチセンサ" as touch
+      touch : input_value()
+      object "エンコーダ" as encoder
+      encoder : input_value()
+    '------ connector interfaces
+    object "通信デバイス" as connector
+    connector : connect2pc()
+      object "Wifi" as wifi
+      wifi : connect2pc()
+      object "Bluetooth" as bluetooth
+      bluetooth : connect2pc()
+
+robo <|-- ev3
+  ev3 *-- devise
+    devise o-- output
+      output <|-- moter
+        moter <|-- move
+        moter <|-- tail
+      output <|-- display
+      output <|-- speaker
+    devise o-- input
+      input <|-- censor
+        censor <|-- light
+        censor <|-- jyro
+        censor <|-- sonar
+        censor <|-- touch
+        censor <|-- encoder
+    devise o-- connector
+      connector <|-- wifi
+      connector <|-- bluetooth
+
+@enduml
+

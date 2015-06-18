@@ -1,0 +1,154 @@
+@startuml{class.png}
+
+top to bottom direction
+
+' クラス図でイメージ出来ない人用スケルトンコード javaっぽい？
+' ---- データ代入は等式からアクセサになる
+' UI ui = new UI()
+' Select select = new Select()
+' ui.mode_name = select.exec()
+' mode = ModeCreator.create(ui.mode_name)
+' mode.exec()
+'
+' public abstract Mode { void exec() }
+' public class DebugMode implements Mode {}
+' public class CalbrationMode implements Mode {}
+' public class RunMode implements Mode {}
+
+class UI {
+  +selected_mode
+  -mode_name
+}
+
+abstract Menu {
+  +{abstract}exec()
+}
+
+class Select {
+  +exec()
+}
+
+class Exec {
+  +exec()
+}
+
+class ModeCreator {
+  +create()
+}
+
+abstract Mode {
+  +{abstract}exec()
+}
+
+class DebugMode {
+  +exec()
+}
+
+class RunMode {
+  +exec()
+}
+
+class CalbrationMode {
+  +exec()
+}
+
+UI "1" *--> "2" Menu : <<use>>
+Menu <|-- Select
+Menu <|-- Exec
+Select "1" o--> "1" ModeCreator
+ModeCreator "1" .left.> "1" Mode : <<create>>
+Exec "1" .left.> "1" Mode : <<use>>
+Mode <|-- RunMode
+Mode <|-- DebugMode
+Mode <|-- CalbrationMode
+
+abstract RunStrategy {
+  +exec()
+  +change()
+}
+
+class NormalAreaRunStrategy {
+  +exec() : RunStrategy
+}
+
+class HardAreaRunStrategy {
+  +exec() : RunStrategy
+}
+
+class ExceptionRunStrategy {
+  +exec() : RunStrategy
+}
+
+RunMode   "1" ..> "*" Runner : <<use>>
+DebugMode "1" ..> "*" Runner : <<use>>
+
+Runner "1" o--> "*" RunStrategy
+RunStrategy "1" o-left-> "*" Movement
+RunStrategy "1" o--> "*" RunStyle
+
+RunStrategy <|-- NormalAreaRunStrategy
+RunStrategy <|-- HardAreaRunStrategy
+RunStrategy <|-- ExceptionRunStrategy
+RunStrategy <|-- TargetStraightMovement
+
+class Runner {
+  +run()
+}
+
+abstract Movement {
+  +turn
+  +speed
+  +{abstract}calc_trun()
+  +{abstract}run(turn, speed)
+}
+
+class MAIMAIMovement {
+  +calc_trun() : int
+  +run(turn, speed)
+}
+
+class TargetStraightMovement {
+  +calc_trun() : int
+  +run(turn, speed)
+}
+
+class PIDMovement {
+  +run(turn, speed)
+}
+
+Movement <|-- MAIMAIMovement
+Movement <|-- PIDMovement
+
+abstract RunStyle {
+  +change(style:RunStyle)
+}
+
+RunStyle <|-- Stand
+RunStyle <|-- Tail
+
+Runner "1"..> "1" EV3 : <<use>>
+EV3 "1" o-- "1" Devise
+Devise "1" o--> "*" OutputDevise
+Devise "1" o--> "*" InputDevise
+Devise "1" o--> "*" ConnectionDevise
+
+OutputDevise <|-- Motor
+OutputDevise <|-- Display
+OutputDevise <|-- Speaker
+
+Motor <|-- TailMotor
+Motor <|-- RunMotor
+
+InputDevise  <|-- Sensor
+InputDevise  <|-- KeyButton
+
+Sensor <|-- JyroSensor
+Sensor <|-- SonarSensor
+Sensor <|-- TouchSensor
+Sensor <|-- LightSensor
+Sensor <|-- Encoder
+
+ConnectionDevise <|-- Wifi
+ConnectionDevise <|-- Bluetooth
+
+@enduml
