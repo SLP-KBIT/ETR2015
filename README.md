@@ -13,10 +13,16 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
 
 ## ディレクトリ構成
 
- |
- |_ README.md
- |_ .gitignore
- |_ usecase |_ 01
+```
+.
+ diagram/
+ ├── activity/
+ ├── class/
+ ├── sequence/
+ └── usecase/
+ src/
+ └── slim/
+```
 
 各図にバージョンを設けたのは、大幅に変更を行った場合のため。
 大幅な変更を行う場合は新たなバージョン(ディレクトリ)を作成する。
