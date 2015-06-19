@@ -1,0 +1,21 @@
+@startuml
+
+title usecase 01
+
+actor 競技者 as user
+actor EV3 as robo
+
+package "走行して難所をクリアするシステム" {
+    
+    usecase 走行する as run
+    usecase 難所をクリアする as obs
+    usecase キャリブレーションする as calib
+
+}
+
+user - run
+user - obs
+robo - calib
+
+@enduml
+
