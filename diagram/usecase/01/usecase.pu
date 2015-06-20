@@ -5,8 +5,10 @@ title usecase 01
 actor 競技者 as user
 actor EV3 as robo
 
+left to right direction
+
 package "走行して難所をクリアするシステム" {
-    
+
     usecase 走行する as run
     usecase 難所をクリアする as obs
     usecase キャリブレーションする as calib
@@ -16,13 +18,13 @@ package "走行して難所をクリアするシステム" {
     usecase 駐車をクリアする as park
 }
 
-user - run
-user - obs
-robo - calib
-run - black <<include>>
-obs - figy <<include>>
-obs - gate <<include>>
-obs - park <<include>>
+user -- run
+user -- obs
+robo -- calib
+run  -- black : <<include>>
+obs  -- figy  : <<include>>
+obs  -- gate  : <<include>>
+obs  -- park  : <<include>>
 
 @enduml
 
