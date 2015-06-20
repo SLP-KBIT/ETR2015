@@ -1,6 +1,6 @@
 # ユースケース図
 
-![usecase:01]"usecase.png"
+![usecase:01]usecase.png
 
 ## ユースケースシナリオ
 
