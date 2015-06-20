@@ -19,8 +19,8 @@ package "走行して難所をクリアするシステム" {
 }
 
 user -- run
-user -- obs
 robo -- calib
+run  .. obs   : <<include>>>
 run  .. black : <<include>>
 obs  .. figy  : <<include>>
 obs  .. gate  : <<include>>
