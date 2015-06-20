@@ -21,10 +21,10 @@ package "走行して難所をクリアするシステム" {
 user -- run
 user -- obs
 robo -- calib
-run  -- black : <<include>>
-obs  -- figy  : <<include>>
-obs  -- gate  : <<include>>
-obs  -- park  : <<include>>
+run  .. black : <<include>>
+obs  .. figy  : <<include>>
+obs  .. gate  : <<include>>
+obs  .. park  : <<include>>
 
 @enduml
 
