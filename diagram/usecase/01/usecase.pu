@@ -12,19 +12,23 @@ package "走行して難所をクリアするシステム" {
     usecase 走行する as run
     usecase 難所をクリアする as obs
     usecase キャリブレーションする as calib
-    usecase 黒線追跡する as black
+    usecase ベーシッククリアを走破する as basic
     usecase フィギュアLをクリアする as figy
     usecase ルックアップゲートをクリアする as gate
     usecase 駐車をクリアする as park
+    usecase 黒線追跡をする as trace
 }
 
 user -- run
 robo -- calib
 run  .. obs   : <<include>>>
-run  .. black : <<include>>
+run  .. basic : <<include>>
 obs  .. figy  : <<include>>
 obs  .. gate  : <<include>>
 obs  .. park  : <<include>>
-
+basic .. trace: <<include>>
+park .. trace : <<include>>
+gate .. trace : <<include>>
+figy .. trace : <<include>>
 @enduml
 
