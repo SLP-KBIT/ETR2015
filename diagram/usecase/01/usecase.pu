@@ -7,7 +7,7 @@ actor タッチセンサ as robo
 
 left to right direction
 
-package "走行して難所をクリアするシステム" {
+package "2015年度コース走行システム" {
 
     usecase 走行する as run
     usecase 難所をクリアする as obs
