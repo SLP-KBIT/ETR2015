@@ -3,7 +3,6 @@
 title usecase 01
 
 actor 競技者 as user
-actor スタート as robo
 actor 外乱光 as light
 actor 段差 as ste
 actor フィギュアL as figyuaL
@@ -47,10 +46,12 @@ trace -- courseout : <<thneatan>>
 figy  -- invert    : <<thneatan>>
 gate  -- invert    : <<include>>
 figyuaL -- trouble 
-ste -- trouble
+
 light -- courseout
 ste -- courseout
 invert -- ste
+trace --buckrun : <<include>>
+emargencystop --invert : <<thneatan>>
 
 @enduml
 
