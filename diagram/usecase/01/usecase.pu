@@ -21,7 +21,7 @@ package "2015年度コース走行システム" {
 }
 
 user -- run
-robo -- calib
+user -- calib
 run  .. obs   : <<extend>>
 run  .. basic : <<include>>
 obs  .. figy  : <<include>>
