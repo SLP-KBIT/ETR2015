@@ -3,7 +3,7 @@
 title usecase 01
 
 actor 競技者 as user
-actor EV3 as robo
+actor タッチセンサ as robo
 
 left to right direction
 
@@ -17,11 +17,12 @@ package "走行して難所をクリアするシステム" {
     usecase ルックアップゲートをクリアする as gate
     usecase 駐車をクリアする as park
     usecase 黒線追跡をする as trace
+    usecase 灰色を検出する as glay
 }
 
 user -- run
 robo -- calib
-run  .. obs   : <<include>>>
+run  .. obs   : <<include>>
 run  .. basic : <<include>>
 obs  .. figy  : <<include>>
 obs  .. gate  : <<include>>
@@ -30,5 +31,7 @@ basic .. trace: <<include>>
 park .. trace : <<include>>
 gate .. trace : <<include>>
 figy .. trace : <<include>>
+obs .. glay   : <<extend>>
+
 @enduml
 
