@@ -1,0 +1,56 @@
+@startuml
+
+title usecase 01
+
+actor 競技者 as user
+actor スタート as robo
+actor 外乱光 as light
+actor 段差 as ste
+actor フィギュアL as figyuaL
+
+left to right direction
+
+package "2015年度コース走行システム" {
+
+    usecase 走行する as run
+    usecase 難所をクリアする as obs
+    usecase キャリブレーションする as calib
+    usecase ベーシックステージを走破する as basic
+    usecase フィギュアLをクリアする as figy
+    usecase ルックアップゲートをクリアする as gate
+    usecase 駐車をクリアする as park
+    usecase 黒線追跡をする as trace
+    usecase 灰色を検出する as glay
+    usecase 復帰走行する as buckrun <<mitigate>>
+    usecase コースアウトする as courseout <<missusecase>>
+    usecase 転倒する as invert <<missusecase>>
+    usecase 緊急停止する as emargencystop <<mitigate>>
+    usecase 特定の脅威 as trouble
+
+}
+
+user -- run
+user -- calib
+run  .. obs   : <<extend>>
+run  .. basic : <<include>>
+obs  .. figy  : <<include>>
+obs  .. gate  : <<include>>
+obs  .. park  : <<include>>
+basic .. trace: <<include>>
+park .. trace : <<include>>
+gate .. trace : <<include>>
+figy .. trace : <<include>>
+obs .. glay   : <<extend>>
+
+ste <- figyuaL
+trace -- courseout : <<thneatan>>
+figy  -- invert    : <<thneatan>>
+gate  -- invert    : <<include>>
+figyuaL -- trouble 
+ste -- trouble
+light -- courseout
+ste -- courseout
+invert -- ste
+
+@enduml
+
