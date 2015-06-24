@@ -3,7 +3,7 @@
 title usecase 01
 
 actor 競技者 as user
-actor タッチセンサ as robo
+actor スタート as robo
 
 left to right direction
 
@@ -23,7 +23,7 @@ package "2015年度コース走行システム" {
 user -- run
 robo -- calib
 run  .. obs   : <<extend>>
-run  .. basic : <<extend>>
+run  .. basic : <<include>>
 obs  .. figy  : <<include>>
 obs  .. gate  : <<include>>
 obs  .. park  : <<include>>
