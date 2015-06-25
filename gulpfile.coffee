@@ -35,15 +35,15 @@ gulp.task 'plantuml', ->
     .pipe plantuml(
       jarPath: "./plantuml/plantuml.jar"
     )
-    .pipe gulp.dest "./build/"
+    .pipe gulp.dest "./build/diagram"
     .pipe plumber()
 
 # 監視して自動コンパイル
 gulp.task 'watch', ->
   gulp.watch config.slim.src, [ "slim" ]
-  gulp.watch "./diagram/**/*.pu", [ "plantuml" ]
+  # gulp.watch "./diagram/**/*.pu", [ "plantuml" ]
   gulp.src 'gulpfile.coffee'
 
 # デフォルト
-gulp.task 'default', ['slim', 'plantuml', 'webserver', 'watch']
+gulp.task 'default', ['slim', 'webserver', 'watch']
 
