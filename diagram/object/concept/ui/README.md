@@ -48,7 +48,7 @@ class Exec
 end
 ```
 
-
+ModeCreater
 ``` coffee
 # javaやc++ ではstatic クラスになるね
 class ModeCreater
