@@ -17,13 +17,25 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
 
 ```
 .
- diagram/
- ├── activity/
- ├── class/
- ├── sequence/
- └── usecase/
- src/
- └── slim/
+├── README.md
+├── build
+│   ├── diagram
+│   └── index.html
+├── diagram
+│   ├── activity
+│   ├── class
+│   ├── object
+│   ├── sequence
+│   └── usecase
+├── gulp
+│   └── config.coffee
+├── gulpfile.coffee
+├── node_modules
+│   └── gulp-puligins
+├── package.json
+├── plantuml
+└── src
+    └── slim
 ```
 
 各図にバージョンを設けたのは、大幅に変更を行った場合のため。
