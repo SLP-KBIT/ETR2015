@@ -1,0 +1,38 @@
+@startuml ui.png
+
+top to bottom direction
+
+object "UI" as ui
+  object "モード選択画面:UI" as mode_selecter
+  mode_selecter : selected_mode
+
+    object "選択" as select_mode
+    select_mode : this.selected_mode = select_mode(mode_name)
+    object "実行" as exec_mode
+    exec_mode : exec()
+
+    object "モードクリエーター" as mode_creater
+    mode_creater : create_mode(mode_name)
+
+  object "モード" as mode
+  mode : exec()
+    object "デバッグモード" as debug
+    debug : exec()
+    object "キャリブレーションモード" as calb
+    calb : exec()
+    object "走行モード" as run
+    run : exec()
+
+ui <|-- mode_selecter
+  mode_selecter *-- select_mode
+  mode_selecter *-- exec_mode
+
+  select_mode --> mode_creater
+  mode_creater ..> mode : <<create>>
+  exec_mode ..> mode : <<use>>
+
+  mode <|-- calb
+  mode <|-- run
+  mode <|-- debug
+
+@enduml
