@@ -1,6 +1,12 @@
 !.keep
 /node_modules
 /npm-debug.log
-/build
 /json
+!/build/*
+# disable
+!/build/diagram/activity
+!/build/diagram/class
+!/build/diagram/object
+!/build/diagram/sequence
+!/build/diagram/usecase
 
