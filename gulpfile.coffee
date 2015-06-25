@@ -12,6 +12,7 @@ gulp = require 'gulp'
 webserver = require 'gulp-webserver'
 slim = require 'gulp-slim'
 plumber = require 'gulp-plumber'
+plantuml = require 'gulp-plantuml'
 
 #==================================================
 # task
@@ -29,11 +30,20 @@ gulp.task 'webserver', ->
       host: '0.0.0.0'
       port: '8000'
 
+gulp.task 'plantuml', ->
+  gulp.src "./diagram/**/*.pu"
+    .pipe plantuml(
+      jarPath: "./plantuml/plantuml.jar"
+    )
+    .pipe gulp.dest "./build/"
+    .pipe plumber()
+
 # 監視して自動コンパイル
 gulp.task 'watch', ->
   gulp.watch config.slim.src, [ "slim" ]
+  gulp.watch "./diagram/**/*.pu", [ "plantuml" ]
   gulp.src 'gulpfile.coffee'
 
 # デフォルト
-gulp.task 'default', ['slim', 'webserver', 'watch']
+gulp.task 'default', ['slim', 'plantuml', 'webserver', 'watch']
 
