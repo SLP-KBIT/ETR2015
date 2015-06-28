@@ -50,9 +50,10 @@ package '2015年度コース走行システム' {
   defalut <|-- getenv
 
   normal ..> line    : <<include>>
-  line <.. courseout : <<脅威>>
-  grage <.. courseout : <<脅威>>
-  lookup <.. courseout : <<脅威>>
+
+  line    <.. courseout : <<脅威>>
+  grage   <.. courseout : <<脅威>>
+  lookup  <.. courseout : <<脅威>>
   figureL <.. courseout : <<脅威>>
 
   different <|-- grage
@@ -69,7 +70,8 @@ package '2015年度コース走行システム' {
   stop   ..> falling   : <<緩和>>
 
   courseout -- noise
-  falling  -- ramp
+  courseout -- ramp
+  falling   -- ramp
 
 }
 
