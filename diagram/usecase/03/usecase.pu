@@ -1,0 +1,59 @@
+@startuml usecase.png
+
+title usecase:03 
+
+actor 競技者 as user
+
+left to right direction
+
+skinparam usecase {
+  BackgroundColor<<MissUseCase>> #DD6666
+  BackgroundColor<<Mitigate>> YellowGreen
+}
+
+skinparam actor {
+  BackgroundColor<<NegativeActor>> Black
+}
+
+actor 外乱光 as noise <<NegativeActor>>
+actor 段差   as ramp  <<NegativeActor>>
+
+package '2015年度コース走行システム' {
+
+  usecase 通常走行する            as normal
+  usecase 難所走行する            as different
+  usecase 例外走行する            as exception
+
+  usecase 黒線追跡する            as line
+  usecase ガレージを攻略する      as grage
+  usecase ルックアップ攻略をする  as lookup
+  usecase フィギュアLを後略する   as figureL
+
+  usecase 復帰走行する            as return <<Mitigate>>
+  usecase 緊急停止する            as stop   <<Mitigate>>
+
+  usecase コースアウトする        as courseout <<MissUseCase>>
+  usecase 転倒する                as falling   <<MissUseCase>>
+
+  user -- normal
+  user -- different
+  user -- exception
+
+  normal ..> line : <<include>>
+
+  different <|-- grage
+  different <|-- lookup
+  different <|-- figureL
+
+  exception ..> return : <<extend>>
+  exception ..> stop   : <<extend>>
+
+  return ..> courseout : <<緩和>>
+  stop ..> falling  : <<緩和>>
+
+  courseout -- noise
+  falling  -- ramp
+
+}
+
+@enduml
