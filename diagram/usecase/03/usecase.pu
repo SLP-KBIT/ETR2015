@@ -20,6 +20,8 @@ actor 段差   as ramp  <<NegativeActor>>
 
 package '2015年度コース走行システム' {
 
+  usecase 走行する                as defalut
+
   usecase 通常走行する            as normal
   usecase 難所走行する            as different
   usecase 例外走行する            as exception
@@ -40,12 +42,18 @@ package '2015年度コース走行システム' {
   usecase 電灯の配置を取得する    as getlight
   usecase キャリブレーションする  as calb
 
-  user -- normal
-  user -- different
-  user -- exception
-  user -- getenv
+  user -- defalut
 
-  normal ..> line : <<include>>
+  defalut <|-- normal
+  defalut <|-- different
+  defalut <|-- exception
+  defalut <|-- getenv
+
+  normal ..> line    : <<include>>
+  line <.. courseout : <<脅威>>
+  grage <.. courseout : <<脅威>>
+  lookup <.. courseout : <<脅威>>
+  figureL <.. courseout : <<脅威>>
 
   different <|-- grage
   different <|-- lookup
@@ -58,7 +66,7 @@ package '2015年度コース走行システム' {
   getenv ..> calb      : <<include>>
 
   return ..> courseout : <<緩和>>
-  stop ..> falling  : <<緩和>>
+  stop   ..> falling   : <<緩和>>
 
   courseout -- noise
   falling  -- ramp
