@@ -8,11 +8,12 @@ config = require './gulp/config.coffee'
 # ライブラリ読み込み
 #==================================================
 
-gulp = require 'gulp'
-webserver = require 'gulp-webserver'
-slim = require 'gulp-slim'
-plumber = require 'gulp-plumber'
-plantuml = require 'gulp-plantuml'
+gulp        = require 'gulp'
+slim        = require 'gulp-slim'
+plumber     = require 'gulp-plumber'
+plantuml    = require 'gulp-plantuml'
+webserver   = require 'gulp-webserver'
+browserSync = require 'browser-sync'
 
 #==================================================
 # task
@@ -20,6 +21,7 @@ plantuml = require 'gulp-plantuml'
 gulp.task 'slim', ->
   gulp.src config.slim.src
     .pipe gulp.dest 'build/'
+    .pipe browserSync.stream()
 
 gulp.task 'webserver', ->
   gulp.src 'build/'
@@ -34,6 +36,8 @@ gulp.task 'plantuml', ->
       jarPath: "/home/maxmellon/local/bin/plantuml.jar"
     )
     .pipe gulp.dest "./build/diagram"
+    .pipe browserSync.stream()
+
 
 # 監視して自動コンパイル
 gulp.task 'watch', ->
