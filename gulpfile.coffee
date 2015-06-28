@@ -19,9 +19,7 @@ plantuml = require 'gulp-plantuml'
 #==================================================
 gulp.task 'slim', ->
   gulp.src config.slim.src
-    .pipe slim pretty: true
     .pipe gulp.dest 'build/'
-    .pipe plumber()
 
 gulp.task 'webserver', ->
   gulp.src 'build/'
@@ -33,17 +31,16 @@ gulp.task 'webserver', ->
 gulp.task 'plantuml', ->
   gulp.src "./diagram/**/*.pu"
     .pipe plantuml(
-      jarPath: "./plantuml/plantuml.jar"
+      jarPath: "/home/maxmellon/local/bin/plantuml.jar"
     )
     .pipe gulp.dest "./build/diagram"
-    .pipe plumber()
 
 # 監視して自動コンパイル
 gulp.task 'watch', ->
   gulp.watch config.slim.src, [ "slim" ]
-  # gulp.watch "./diagram/**/*.pu", [ "plantuml" ]
+  gulp.watch "./diagram/**/*.pu", [ "plantuml" ]
   gulp.src 'gulpfile.coffee'
 
 # デフォルト
-gulp.task 'default', ['slim', 'webserver', 'watch']
+gulp.task 'default', ['slim', 'plantuml', 'webserver', 'watch']
 
