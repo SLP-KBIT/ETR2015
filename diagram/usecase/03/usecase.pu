@@ -29,15 +29,21 @@ package '2015年度コース走行システム' {
   usecase ルックアップ攻略をする  as lookup
   usecase フィギュアLを攻略する   as figureL
 
-  usecase 復帰走行する            as return <<Mitigate>>
-  usecase 緊急停止する            as stop   <<Mitigate>>
+  usecase 復帰走行する            as return    <<Mitigate>>
+  usecase 緊急停止する            as stop      <<Mitigate>>
 
   usecase コースアウトする        as courseout <<MissUseCase>>
   usecase 転倒する                as falling   <<MissUseCase>>
 
+  usecase 環境情報を取得する      as getenv
+
+  usecase 電灯の配置を取得する    as getlight
+  usecase キャリブレーションする  as calb
+
   user -- normal
   user -- different
   user -- exception
+  user -- getenv
 
   normal ..> line : <<include>>
 
@@ -47,6 +53,9 @@ package '2015年度コース走行システム' {
 
   exception ..> return : <<extend>>
   exception ..> stop   : <<extend>>
+
+  getenv ..> getlight  : <<include>>
+  getenv ..> calb      : <<include>>
 
   return ..> courseout : <<緩和>>
   stop ..> falling  : <<緩和>>
