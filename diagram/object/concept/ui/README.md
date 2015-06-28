@@ -17,7 +17,6 @@ class ModeSelector
     # has a, a part of な部分
     this.select = new Select()
     this.exec   = new Exec()
-end
 ```
 
 Select
@@ -33,7 +32,6 @@ class Select
     # modeのインスタンスを返す   モードクリエータにインスタンスの生成を委譲
     return this.selected_mode = ModeCreater.create_mode(mode_name)
 
-end
 ```
 
 Exec
@@ -45,7 +43,6 @@ class Exec
 
   exec: (mode)->
     mode.exec()
-end
 ```
 
 ModeCreater
@@ -56,5 +53,4 @@ class ModeCreater
   this.create_mode: (mode_name)->
     # インスタンス作って返すよ
     return new Mode(mode_name)
-end
 ```
