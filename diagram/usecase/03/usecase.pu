@@ -27,7 +27,7 @@ package '2015年度コース走行システム' {
   usecase 黒線追跡する            as line
   usecase ガレージを攻略する      as grage
   usecase ルックアップ攻略をする  as lookup
-  usecase フィギュアLを後略する   as figureL
+  usecase フィギュアLを攻略する   as figureL
 
   usecase 復帰走行する            as return <<Mitigate>>
   usecase 緊急停止する            as stop   <<Mitigate>>
