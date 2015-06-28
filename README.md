@@ -47,21 +47,21 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
 
 2. clone this repository and submodule
 
-  ```
+  ```sh
   $ git clone https://github.com/SLP-ETR-public/ETR2015_model.git
   $ git submodule update --init
   ```
 
 3. execute this command
 
-  ```
+  ```sh
   $ npm i -g gulp gulp-cli # In some cases use $ sudo npm i -g gulp-cli
   $ npm i
   ```
 
 4. execute gulp
 
-  ```
+  ```sh
   $ gulp
   ```
 
