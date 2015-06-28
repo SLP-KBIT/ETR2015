@@ -43,7 +43,7 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
 
 ## how to use gulp
 
-1. npm install
+1. install the node.js and npm
 
 2. clone this repository and submodule
 
