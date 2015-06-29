@@ -11,4 +11,11 @@ module.exports =
     dest: dest + '/'
     slim_option:
       pretty: true
+  sass:
+    src: src + '/sass/*.s[ac]ss'
+    dest: dest + 'css'
+    compass:
+      css: '.sass-cache/compass-cache/'
+      sass: src + 'sass'
+
 
