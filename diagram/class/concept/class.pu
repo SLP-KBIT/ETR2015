@@ -52,10 +52,10 @@ class CalbrationMode {
   +exec()
 }
 
-UI "1" *-- "2" Menu
+UI "1" *--> "2" Menu
 Menu <|-- Select
 Menu <|-- Exec
-Select "1" o-- "1" ModeCreater
+Select "1" o--> "1" ModeCreater
 ModeCreater "1" .left.> "1" Mode : <<create>>
 Exec "1" .left.> "1" Mode : <<use>>
 Mode <|-- RunMode
@@ -103,5 +103,30 @@ RunMethod <|-- PIDMethod
 Strategy "1" o-down-> "*" RunStyle
 RunStyle <|-- Stand
 RunStyle <|-- Tail
+
+Strategy "1"..> "1" EV3 : <<use>>
+EV3 "1" o-- "1" Devise
+Devise "1" o--> "*" OutputDevise
+Devise "1" o--> "*" InputDevise
+Devise "1" o--> "*" ConnectionDevise
+
+OutputDevise <|-- Moter
+OutputDevise <|-- Display
+OutputDevise <|-- Speaker
+
+Motor <|-- TailMotor
+Motor <|-- RunMotor
+
+InputDevise  <|-- Censor
+InputDevise  <|-- KeyButton
+
+Censor <|-- JyroCencor
+Censor <|-- SonarCencor
+Censor <|-- TouchCencor
+Censor <|-- LightCencor
+Censor <|-- Encoder
+
+ConnectionDevise <|-- Wifi
+ConnectionDevise <|-- Bluetooth
 
 @enduml
