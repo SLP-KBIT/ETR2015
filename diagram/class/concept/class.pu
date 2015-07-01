@@ -21,7 +21,7 @@ class UI {
 }
 
 abstract Menu {
-  +exec()
+  +{abstract}exec()
 }
 
 class Select {
@@ -37,7 +37,7 @@ class ModeCreater {
 }
 
 abstract Mode {
-  +exec()
+  +{abstract}exec()
 }
 
 class DebugMode {
@@ -52,56 +52,101 @@ class CalbrationMode {
   +exec()
 }
 
-UI "1" *-- "2" Menu
+UI "1" *--> "2" Menu
 Menu <|-- Select
 Menu <|-- Exec
-Select "1" o-- "1" ModeCreater
+Select "1" o--> "1" ModeCreater
 ModeCreater "1" .left.> "1" Mode : <<create>>
 Exec "1" .left.> "1" Mode : <<use>>
 Mode <|-- RunMode
 Mode <|-- DebugMode
 Mode <|-- CalbrationMode
 
-abstract Strategy {
+abstract RunStrategy {
   +exec()
   +change()
 }
 
-class NormalAreaStrategy {
-  +exec()
+class NormalAreaRunStrategy {
+  +exec() : RunStrategy
 }
 
-class HardAreaStrategy {
-  +exec()
+class HardAreaRunStrategy {
+  +exec() : RunStrategy
 }
 
-class ExceptionStrategy {
-  +exec()
+class ExceptionRunStrategy {
+  +exec() : RunStrategy
 }
 
-RunMode "1" --> "*" Strategy
-Strategy <|-- NormalAreaStrategy
-Strategy <|-- HardAreaStrategy
-Strategy <|-- ExceptionStrategy
+RunMode "1" --> "*" Run
+
+Run "1" *--> "*" RunMethod
+Run "1" *--> "*" RunStyle
+Run "1" *--> "*" RunStrategy
+
+RunStrategy <|-- NormalAreaRunStrategy
+RunStrategy <|-- HardAreaRunStrategy
+RunStrategy <|-- ExceptionRunStrategy
+RunStrategy <|-- TargetStraightMethod
+
+class Run {
+}
 
 abstract RunMethod {
-  +run()
+  +turn
+  +speed
+  +{abstract}calc_trun()
+  +{abstract}run(turn, speed)
 }
 
 class MAIMAIMethod {
-  +run()
+  +calc_trun() : int
+  +run(turn, speed)
+}
+
+class TargetStraightMethod {
+  +calc_trun() : int
+  +run(turn, speed)
 }
 
 class PIDMethod {
-  +run()
+  +run(turn, speed)
 }
 
-Strategy "1" o-right-> "*" RunMethod
 RunMethod <|-- MAIMAIMethod
 RunMethod <|-- PIDMethod
 
-Strategy "1" o-down-> "*" RunStyle
+abstract RunStyle {
+  +change(style:RunStyle)
+}
+
 RunStyle <|-- Stand
 RunStyle <|-- Tail
+
+Run "1"..> "1" EV3 : <<use>>
+EV3 "1" o-- "1" Devise
+Devise "1" o--> "*" OutputDevise
+Devise "1" o--> "*" InputDevise
+Devise "1" o--> "*" ConnectionDevise
+
+OutputDevise <|-- Motor
+OutputDevise <|-- Display
+OutputDevise <|-- Speaker
+
+Motor <|-- TailMotor
+Motor <|-- RunMotor
+
+InputDevise  <|-- Censor
+InputDevise  <|-- KeyButton
+
+Censor <|-- JyroCencor
+Censor <|-- SonarCencor
+Censor <|-- TouchCencor
+Censor <|-- LightCencor
+Censor <|-- Encoder
+
+ConnectionDevise <|-- Wifi
+ConnectionDevise <|-- Bluetooth
 
 @enduml
