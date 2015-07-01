@@ -40,3 +40,28 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
 
 各図にバージョンを設けたのは、大幅に変更を行った場合のため。
 大幅な変更を行う場合は新たなバージョン(ディレクトリ)を作成する。
+
+## how to use gulp
+
+1. install the node.js and npm
+
+2. clone this repository and submodule
+
+  ```sh
+  $ git clone https://github.com/SLP-ETR-public/ETR2015_model.git
+  $ git submodule update --init
+  ```
+
+3. execute this command
+
+  ```sh
+  $ npm i -g gulp gulp-cli # In some cases use $ sudo npm i -g gulp-cli
+  $ npm i
+  ```
+
+4. execute gulp
+
+  ```sh
+  $ gulp
+  ```
+

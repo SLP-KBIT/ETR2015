@@ -1,0 +1,132 @@
+@startuml{class.png}
+
+top to bottom direction
+
+' クラス図でイメージ出来ない人用スケルトンコード javaっぽい？
+' ---- データ代入は等式からアクセサになる
+' UI ui = new UI()
+' Select select = new Select()
+' ui.mode_name = select.exec()
+' mode = ModeCreater.create(ui.mode_name)
+' mode.exec()
+'
+' public interface Mode { void exec() }
+' public class DebugMode implements Mode {}
+' public class CalbrationMode implements Mode {}
+' public class RunMode implements Mode {}
+
+class UI {
+  +selected_mode
+  -mode_name
+}
+
+abstract Menu {
+  +exec()
+}
+
+class Select {
+  +exec()
+}
+
+class Exec {
+  +exec()
+}
+
+class ModeCreater {
+  +create()
+}
+
+abstract Mode {
+  +exec()
+}
+
+class DebugMode {
+  +exec()
+}
+
+class RunMode {
+  +exec()
+}
+
+class CalbrationMode {
+  +exec()
+}
+
+UI "1" *--> "2" Menu
+Menu <|-- Select
+Menu <|-- Exec
+Select "1" o--> "1" ModeCreater
+ModeCreater "1" .left.> "1" Mode : <<create>>
+Exec "1" .left.> "1" Mode : <<use>>
+Mode <|-- RunMode
+Mode <|-- DebugMode
+Mode <|-- CalbrationMode
+
+abstract Strategy {
+  +exec()
+  +change()
+}
+
+class NormalAreaStrategy {
+  +exec()
+}
+
+class HardAreaStrategy {
+  +exec()
+}
+
+class ExceptionStrategy {
+  +exec()
+}
+
+RunMode "1" --> "*" Strategy
+Strategy <|-- NormalAreaStrategy
+Strategy <|-- HardAreaStrategy
+Strategy <|-- ExceptionStrategy
+
+abstract RunMethod {
+  +run()
+}
+
+class MAIMAIMethod {
+  +run()
+}
+
+class PIDMethod {
+  +run()
+}
+
+Strategy "1" o-right-> "*" RunMethod
+RunMethod <|-- MAIMAIMethod
+RunMethod <|-- PIDMethod
+
+Strategy "1" o-down-> "*" RunStyle
+RunStyle <|-- Stand
+RunStyle <|-- Tail
+
+Strategy "1"..> "1" EV3 : <<use>>
+EV3 "1" o-- "1" Devise
+Devise "1" o--> "*" OutputDevise
+Devise "1" o--> "*" InputDevise
+Devise "1" o--> "*" ConnectionDevise
+
+OutputDevise <|-- Moter
+OutputDevise <|-- Display
+OutputDevise <|-- Speaker
+
+Motor <|-- TailMotor
+Motor <|-- RunMotor
+
+InputDevise  <|-- Censor
+InputDevise  <|-- KeyButton
+
+Censor <|-- JyroCencor
+Censor <|-- SonarCencor
+Censor <|-- TouchCencor
+Censor <|-- LightCencor
+Censor <|-- Encoder
+
+ConnectionDevise <|-- Wifi
+ConnectionDevise <|-- Bluetooth
+
+@enduml
