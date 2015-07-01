@@ -9,6 +9,7 @@ left to right direction
 skinparam usecase {
   BackgroundColor<<MissUseCase>> #DD6666
   BackgroundColor<<Mitigate>> YellowGreen
+  ArrowColor #333399
 }
 
 skinparam actor {
@@ -20,7 +21,7 @@ actor 段差   as ramp  <<NegativeActor>>
 
 package '2015年度コース走行システム' {
 
-  usecase 走行する                as defalut
+  usecase 走行を開始する          as defalut
 
   usecase 通常走行する            as normal
   usecase 難所走行する            as different
@@ -43,35 +44,35 @@ package '2015年度コース走行システム' {
   usecase キャリブレーションする  as calb
 
   user -- defalut
+  user -- getenv
 
-  defalut <|-- normal
-  defalut <|-- different
-  defalut <|-- exception
-  defalut <|-- getenv
+  defalut ..> normal    : <<include>>
+  defalut ..> different : <<include>>
+  defalut ..> exception : <<include>>
 
-  normal ..> line    : <<include>>
-
-  line    <.. courseout : <<脅威>>
   grage   <.. courseout : <<脅威>>
-  lookup  <.. courseout : <<脅威>>
-  figureL <.. courseout : <<脅威>>
+  figureL <.. courseout
+  lookup  <.. courseout
+
+  figureL <.. falling : <<脅威>>
+  lookup  <.. falling
 
   different <|-- grage
   different <|-- lookup
   different <|-- figureL
 
-  exception ..> return : <<extend>>
-  exception ..> stop   : <<extend>>
+  exception <|-- return : <<extend>>
+  exception <|-- stop   : <<extend>>
 
   getenv ..> getlight  : <<include>>
   getenv ..> calb      : <<include>>
 
-  return ..> courseout : <<緩和>>
-  stop   ..> falling   : <<緩和>>
-
   courseout -- noise
   courseout -- ramp
   falling   -- ramp
+
+  stop   ..>  falling   : <<緩和>>
+  return ..>  courseout : <<緩和>>
 
 }
 
