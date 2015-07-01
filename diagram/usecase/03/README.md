@@ -5,8 +5,11 @@
 # usecase scenarios
 
 [grage](./scenario/clear_grage.md)
+
 [lookup](./scenario/clear_lookup.md)
+
 [calib](./scenario/do_calibration.md)
+
 [trace](./scenario/trace_line.md)
 
 # TODO
