@@ -40,7 +40,7 @@ gulp.task 'webserver', ->
 gulp.task 'plantuml', ->
   gulp.src "./diagram/**/*.pu"
     .pipe plantuml(
-      jarPath: "/home/maxmellon/local/bin/plantuml.jar"
+      jarPath: "plantuml/plantuml.jar"
     )
     .pipe gulp.dest "./build/diagram"
     .pipe browserSync.stream()
