@@ -7,7 +7,7 @@ top to bottom direction
 ' UI ui = new UI()
 ' Select select = new Select()
 ' ui.mode_name = select.exec()
-' mode = ModeCreater.create(ui.mode_name)
+' mode = ModeCreator.create(ui.mode_name)
 ' mode.exec()
 '
 ' public interface Mode { void exec() }
@@ -32,7 +32,7 @@ class Exec {
   +exec()
 }
 
-class ModeCreater {
+class ModeCreator {
   +create()
 }
 
@@ -55,8 +55,8 @@ class CalbrationMode {
 UI "1" *--> "2" Menu : <<use>>
 Menu <|-- Select
 Menu <|-- Exec
-Select "1" o--> "1" ModeCreater
-ModeCreater "1" .left.> "1" Mode : <<create>>
+Select "1" o--> "1" ModeCreator
+ModeCreator "1" .left.> "1" Mode : <<create>>
 Exec "1" .left.> "1" Mode : <<use>>
 Mode <|-- RunMode
 Mode <|-- DebugMode
@@ -79,11 +79,11 @@ class ExceptionRunStrategy {
   +exec() : RunStrategy
 }
 
-RunMode "1" ..> "*" Run
-DebugMode "1" ..> "*" Run
+RunMode   "1" ..> "*" Run : <<use>>
+DebugMode "1" ..> "*" Run : <<use>>
 
 Run "1" o--> "*" RunStrategy
-RunStrategy "1" o--> "*" RunMethod
+RunStrategy "1" o-left-> "*" RunMethod
 RunStrategy "1" o--> "*" RunStyle
 
 RunStrategy <|-- NormalAreaRunStrategy
@@ -138,14 +138,14 @@ OutputDevise <|-- Speaker
 Motor <|-- TailMotor
 Motor <|-- RunMotor
 
-InputDevise  <|-- Censor
+InputDevise  <|-- Sensor
 InputDevise  <|-- KeyButton
 
-Censor <|-- JyroCencor
-Censor <|-- SonarCencor
-Censor <|-- TouchCencor
-Censor <|-- LightCencor
-Censor <|-- Encoder
+Sensor <|-- JyroSensor
+Sensor <|-- SonarSensor
+Sensor <|-- TouchSensor
+Sensor <|-- LightSensor
+Sensor <|-- Encoder
 
 ConnectionDevise <|-- Wifi
 ConnectionDevise <|-- Bluetooth
