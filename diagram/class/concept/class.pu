@@ -52,7 +52,7 @@ class CalbrationMode {
   +exec()
 }
 
-UI "1" *--> "2" Menu
+UI "1" *--> "2" Menu : <<use>>
 Menu <|-- Select
 Menu <|-- Exec
 Select "1" o--> "1" ModeCreater
@@ -79,11 +79,12 @@ class ExceptionRunStrategy {
   +exec() : RunStrategy
 }
 
-RunMode "1" --> "*" Run
+RunMode "1" ..> "*" Run
+DebugMode "1" ..> "*" Run
 
-Run "1" *--> "*" RunMethod
-Run "1" *--> "*" RunStyle
-Run "1" *--> "*" RunStrategy
+Run "1" o--> "*" RunStrategy
+RunStrategy "1" o--> "*" RunMethod
+RunStrategy "1" o--> "*" RunStyle
 
 RunStrategy <|-- NormalAreaRunStrategy
 RunStrategy <|-- HardAreaRunStrategy
