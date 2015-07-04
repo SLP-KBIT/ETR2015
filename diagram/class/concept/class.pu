@@ -10,7 +10,7 @@ top to bottom direction
 ' mode = ModeCreater.create(ui.mode_name)
 ' mode.exec()
 '
-' public interface Mode { void exec() }
+' public atribute Mode { void exec() }
 ' public class DebugMode implements Mode {}
 ' public class CalbrationMode implements Mode {}
 ' public class RunMode implements Mode {}
