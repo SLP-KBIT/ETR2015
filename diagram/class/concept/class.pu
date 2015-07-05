@@ -79,10 +79,10 @@ class ExceptionRunStrategy {
   +exec() : RunStrategy
 }
 
-RunMode   "1" ..> "*" Run : <<use>>
-DebugMode "1" ..> "*" Run : <<use>>
+RunMode   "1" ..> "*" Runner : <<use>>
+DebugMode "1" ..> "*" Runner : <<use>>
 
-Run "1" o--> "*" RunStrategy
+Runner "1" o--> "*" RunStrategy
 RunStrategy "1" o-left-> "*" RunMethod
 RunStrategy "1" o--> "*" RunStyle
 
@@ -91,7 +91,8 @@ RunStrategy <|-- HardAreaRunStrategy
 RunStrategy <|-- ExceptionRunStrategy
 RunStrategy <|-- TargetStraightMethod
 
-class Run {
+class Runner {
+  +run()
 }
 
 abstract RunMethod {
@@ -125,7 +126,7 @@ abstract RunStyle {
 RunStyle <|-- Stand
 RunStyle <|-- Tail
 
-Run "1"..> "1" EV3 : <<use>>
+Runner "1"..> "1" EV3 : <<use>>
 EV3 "1" o-- "1" Devise
 Devise "1" o--> "*" OutputDevise
 Devise "1" o--> "*" InputDevise
