@@ -1,4 +1,4 @@
-package boundly.menu;
+package Boundly.Menu;
 
 public abstract class Menu
 {

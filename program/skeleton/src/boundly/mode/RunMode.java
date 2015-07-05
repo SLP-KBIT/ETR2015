@@ -1,4 +1,6 @@
-package boundly.mode;
+package Boundly.Mode;
+
+import Controller.Runner;
 
 public class RunMode extends Mode
 {
@@ -6,9 +8,10 @@ public class RunMode extends Mode
     {
         super();
     }
-    
+
     public void exec()
     {
-        System.out.println("runninng");
+        Runner runner = new Runner();
+        runner.run();
     }
 }

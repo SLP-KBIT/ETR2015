@@ -1,7 +1,7 @@
-package boundly.ui;
+package Boundly.UI;
 
-import boundly.menu.*;
-import boundly.mode.*;
+import Boundly.Menu.*;
+import Boundly.Mode.*;
 
 public class UI
 {

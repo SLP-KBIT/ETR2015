@@ -1,6 +1,6 @@
-package boundly.menu;
+package Boundly.Menu;
 
-import boundly.mode.Mode;
+import Boundly.Mode.*;
 
 public class ExecMenu extends Menu
 {

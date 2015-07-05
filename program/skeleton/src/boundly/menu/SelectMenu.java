@@ -1,7 +1,6 @@
-package boundly.menu;
+package Boundly.Menu;
 
-import boundly.mode.Mode;
-import boundly.mode.ModeCreator;
+import Boundly.Mode.*;
 
 public class SelectMenu extends Menu
 {
@@ -14,9 +13,10 @@ public class SelectMenu extends Menu
     public Mode select()
     {
         this.modeName = "Run"; // this.modeName = this.selectModeName();
-        return ModeCreator.create(this.modeName);
+        Mode mode = ModeCreator.create(this.modeName);
+        return mode;
     }
-    public static String selectModeName()
+    private static String selectModeName()
     {
         //TODO: 入力に対してモードネームを返す
         return "";
