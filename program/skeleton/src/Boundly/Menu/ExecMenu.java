@@ -17,6 +17,7 @@ public class ExecMenu extends Menu
 
     public void exec()
     {
+        System.out.println("exec mode: " + selectedMode.getClass());
         this.selectedMode.exec();
     }
 }
