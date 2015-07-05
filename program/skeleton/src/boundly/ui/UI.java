@@ -5,11 +5,14 @@ import boundly.mode.*;
 
 public class UI
 {
-	public static Select select;
-	public static Exec exec;
-	public static void main(String[] args)
-	{
-		select = new Select();
-		exec = new Exec();
-	}
+    public static SelectMenu selectMenu;
+    public static ExecMenu execMenu;
+
+    public static void main(String[] args)
+    {
+        selectMenu = new SelectMenu();
+        Mode mode = selectMenu.select();
+        execMenu = new ExecMenu(mode);
+        execMenu.exec();
+    }
 }
