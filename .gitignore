@@ -1,8 +1,12 @@
 !.keep
+.metadata
+RemoteSystemsTempFiles
+.recommenders
 /node_modules
 /npm-debug.log
 /json
 /build/*
+/bin
 # disable
 !/build/diagram/activity
 !/build/diagram/class
