@@ -6,4 +6,5 @@ public class DebugMode extends Mode
     {
         super();
     }
+    public void exec() {}
 }

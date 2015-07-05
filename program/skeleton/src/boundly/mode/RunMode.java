@@ -6,6 +6,7 @@ public class RunMode extends Mode
     {
         super();
     }
+    
     public void exec()
     {
         System.out.println("runninng");

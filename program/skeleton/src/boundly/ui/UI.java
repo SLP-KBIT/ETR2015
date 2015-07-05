@@ -5,8 +5,8 @@ import boundly.mode.*;
 
 public class UI
 {
-    public static SelectMenu selectMenu;
-    public static ExecMenu execMenu;
+    private static SelectMenu selectMenu;
+    private static ExecMenu execMenu;
 
     public static void main(String[] args)
     {

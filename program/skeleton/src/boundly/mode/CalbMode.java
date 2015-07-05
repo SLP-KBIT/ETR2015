@@ -6,4 +6,5 @@ public class CalbMode extends Mode
     {
     
     }
+    public void exec() {}
 }
