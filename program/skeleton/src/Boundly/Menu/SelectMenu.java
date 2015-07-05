@@ -13,6 +13,7 @@ public class SelectMenu extends Menu
     public Mode select()
     {
         this.modeName = "Run"; // this.modeName = this.selectModeName();
+        System.out.println("modename: " + modeName);
         Mode mode = ModeCreator.create(this.modeName);
         return mode;
     }

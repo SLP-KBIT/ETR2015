@@ -8,10 +8,13 @@ public class ModeCreator
     switch(modeName) {
       case "Run" :
         mode = new RunMode();
+        break;
       case "Debug" :
         mode = new DebugMode();
+        break;
       case "Calbrate" :
         mode = new CalbMode();
+        break;
     }
     return mode;
   }
