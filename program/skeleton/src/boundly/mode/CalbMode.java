@@ -1,4 +1,4 @@
-package boundly.mode;
+package Boundly.Mode;
 
 public class CalbMode extends Mode
 {
@@ -6,4 +6,5 @@ public class CalbMode extends Mode
     {
     
     }
+    public void exec() {}
 }

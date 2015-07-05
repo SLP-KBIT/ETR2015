@@ -1,4 +1,4 @@
-package boundly.mode;
+package Boundly.Mode;
 
 public class DebugMode extends Mode
 {
@@ -6,4 +6,5 @@ public class DebugMode extends Mode
     {
         super();
     }
+    public void exec() {}
 }

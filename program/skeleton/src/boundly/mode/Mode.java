@@ -1,13 +1,10 @@
-package boundly.mode;
+package Boundly.Mode;
 
 public abstract class Mode
 {
     public Mode()
     {
+    }
     
-    }
-    public void exec()
-    {
-        
-    }
+    public abstract void exec();
 }

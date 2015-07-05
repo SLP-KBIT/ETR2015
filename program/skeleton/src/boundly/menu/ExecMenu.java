@@ -1,18 +1,20 @@
-package boundly.menu;
+package Boundly.Menu;
 
-import boundly.mode.Mode;
+import Boundly.Mode.*;
 
 public class ExecMenu extends Menu
 {
-    public Mode selectedMode;
+    private Mode selectedMode;
     public ExecMenu()
     {
         super();
     }
+
     public ExecMenu(Mode selectedMode)
     {
         this.selectedMode = selectedMode;
     }
+
     public void exec()
     {
         this.selectedMode.exec();

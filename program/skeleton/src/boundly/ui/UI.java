@@ -1,12 +1,12 @@
-package boundly.ui;
+package Boundly.UI;
 
-import boundly.menu.*;
-import boundly.mode.*;
+import Boundly.Menu.*;
+import Boundly.Mode.*;
 
 public class UI
 {
-    public static SelectMenu selectMenu;
-    public static ExecMenu execMenu;
+    private static SelectMenu selectMenu;
+    private static ExecMenu execMenu;
 
     public static void main(String[] args)
     {
