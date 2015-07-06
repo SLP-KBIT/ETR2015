@@ -8,7 +8,7 @@ public class SampleRunMethod extends RunMethod
     }
     
     // threshold : 閾値
-    public int calctTreshold()
+    public int calcTreshold()
     {
         System.out.println("calclate treshold by " + this.getClass());
         return 0;

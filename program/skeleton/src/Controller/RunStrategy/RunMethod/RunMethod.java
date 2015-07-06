@@ -7,5 +7,5 @@ public abstract class RunMethod
         
     }
     
-    public abstract int calctTreshold();
+    public abstract int calcTreshold();
 }

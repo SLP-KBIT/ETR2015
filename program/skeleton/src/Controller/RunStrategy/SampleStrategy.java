@@ -15,7 +15,7 @@ public class SampleStrategy extends RunStrategy
         System.out.println("execute strategy of " + this.getClass());
         RunMethod runMethod = new SampleRunMethod();
         RunStyle runStyle = new SampleRunStyle();
-        runMethod.calctTreshold();
+        runMethod.calcTreshold();
         runStyle.transform();
         // TODO: ライン未検出，転倒時の例外を投げる
         // if ( ~~~ ) {
