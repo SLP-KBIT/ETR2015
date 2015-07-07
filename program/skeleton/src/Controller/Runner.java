@@ -6,16 +6,22 @@ import Exception.LineNotFoundException;
 
 public class Runner
 {
-    private EV3 ev3;
+    private static final EV3 ev3 = new EV3();
+
     public Runner()
     {
-        this.ev3 = new EV3();
+        
     }
 
     public void run()
     {
         System.out.println("runninng...");
-        RunStrategy strategy = new SampleStrategy(this.ev3);
+        RunStrategy strategy = new SampleStrategy(this.getEV3());
         strategy.exec();
+    }
+
+    private EV3 getEV3()
+    {
+        return ev3;
     }
 }

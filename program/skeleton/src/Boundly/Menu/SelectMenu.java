@@ -12,7 +12,7 @@ public class SelectMenu extends Menu
     
     public Mode select()
     {
-        this.modeName = "Run"; // this.modeName = this.selectModeName();
+        this.modeName = SelectMenu.selectModeName();
         System.out.println("modename: " + modeName);
         Mode mode = ModeCreator.create(this.modeName);
         return mode;
@@ -20,6 +20,6 @@ public class SelectMenu extends Menu
     private static String selectModeName()
     {
         //TODO: 入力に対してモードネームを返す
-        return "";
+        return "Run";
     }
 }

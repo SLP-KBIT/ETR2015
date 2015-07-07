@@ -14,6 +14,7 @@ public class EV3
     public TailMotor tailMotor;
     // sensor
     public LightSensor lightSensor;
+    public JyroSensor JyroSensor;
 
     public EV3()
     {
@@ -21,5 +22,6 @@ public class EV3
         this.rightMotor = new RunMotor(2);
         this.tailMotor = new TailMotor(3);
         this.lightSensor = new LightSensor('A');
+        this.JyroSensor = new JyroSensor('B');
     }
 }
