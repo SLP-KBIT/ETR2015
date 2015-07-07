@@ -1,10 +1,10 @@
 package Entity.EV3.Devise.OutputDevise.Motor;
 
-public class TailMotor extends Motor
+public final class TailMotor extends Motor
 {
-    public TailMotor()
+    public TailMotor(int port)
     {
-        super();
+        super(port);
     }
     public void setSpeed(int speed)
     {
@@ -12,6 +12,6 @@ public class TailMotor extends Motor
     }
     public void setLotate(int lotate)
     {
-        System.out.println("set speed : " + String.valueOf(lotate));
+        System.out.println("set lotate : " + String.valueOf(lotate));
     }
 }
