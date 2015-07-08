@@ -1,13 +1,11 @@
 package Controller.RunStrategy;
 
-import Entity.EV3.EV3;
-
-public abstract class RunStrategy {
+public abstract class RunStrategy
+{
   protected int defaultSpeed;
-  protected EV3 ev3; // Singleton Pattern
 
-  public RunStrategy(EV3 ev3) {
-    this.ev3 = ev3;
+  public RunStrategy()
+  {
     this.defaultSpeed = 100;
   }
 
