@@ -1,7 +1,7 @@
 package Controller.RunStrategy;
 
-import Controller.RunStrategy.RunMovement.RunMovement;
-import Controller.RunStrategy.RunMovement.SampleRunMovement;
+import Controller.RunStrategy.Movement.Movement;
+import Controller.RunStrategy.Movement.SampleMovement;
 import Controller.RunStrategy.RunStyle.RunStyle;
 import Controller.RunStrategy.RunStyle.SampleRunStyle;
 
@@ -19,7 +19,7 @@ public class SampleStrategy extends RunStrategy {
 
   public void exec() {
     System.out.println("execute strategy of " + this.getClass());
-    RunMovement runMethod = new SampleRunMovement();
+    Movement runMethod = new SampleMovement();
     RunStyle runStyle = new SampleRunStyle();
     int turn = runMethod.calcTreshold();
     runMethod.execRun(turn, this.defaultSpeed);

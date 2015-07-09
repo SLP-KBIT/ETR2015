@@ -1,17 +1,19 @@
-package Controller.RunStrategy.RunMovement;
+package Controller.RunStrategy.Movement;
 
 import Controller.Runner;
 import Entity.EV3.EV3;
+import Entity.EV3.Devise.InputDevise.Sensor.LightSensor;
 
-public class SampleRunMovement extends RunMovement
+public class SampleMovement extends Movement
 {
-  public SampleRunMovement() {}
+  public SampleMovement() {}
 
   // threshold : 閾値
   public int calcTreshold()
   {
     EV3 ev3 = Runner.getEV3();
-    ev3.lightSensor.getValue();
+    LightSensor light = ev3.getLight();
+    light.getValue();
     System.out.println("calclate treshold by " + this.getClass());
     return 5;  // 適当な値
   }
@@ -20,7 +22,6 @@ public class SampleRunMovement extends RunMovement
   {
     System.out.println("execRun");
     EV3 ev3 = Runner.getEV3();
-    ev3.leftMotor.setSpeed(speed - turn);
-    ev3.rightMotor.setSpeed(speed + turn);
+
   }
 }

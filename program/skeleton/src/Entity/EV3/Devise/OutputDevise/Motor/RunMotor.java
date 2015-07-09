@@ -16,5 +16,4 @@ public final class RunMotor extends Motor
   {
     System.out.println("set rotate : " + String.valueOf(lotate));
   }
-
 }
