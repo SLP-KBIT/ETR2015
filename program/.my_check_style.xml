@@ -36,21 +36,6 @@ Checkstyle configurartion that checks the Google coding conventions (https://goo
       <property name="tokens" value="LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
     </module>
     <module name="NeedBraces"/>
-    <module name="LeftCurly">
-      <property name="severity" value="ignore"/>
-      <property name="maxLineLength" value="100"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-    </module>
-    <module name="RightCurly">
-      <property name="severity" value="ignore"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-    </module>
-    <module name="RightCurly">
-      <property name="severity" value="ignore"/>
-      <property name="option" value="alone"/>
-      <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, LITERAL_DO, STATIC_INIT, INSTANCE_INIT"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-    </module>
     <module name="WhitespaceAround">
       <property name="allowEmptyConstructors" value="true"/>
       <property name="allowEmptyMethods" value="true"/>
@@ -77,16 +62,11 @@ Checkstyle configurartion that checks the Google coding conventions (https://goo
       <property name="option" value="EOL"/>
       <property name="tokens" value="COMMA"/>
     </module>
-    <module name="PackageName">
-      <property name="severity" value="ignore"/>
-      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
-      <message key="name.invalidPattern" value="Package name ''{0}'' must match pattern ''{1}''."/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-    </module>
     <module name="TypeName">
       <message key="name.invalidPattern" value="Type name ''{0}'' must match pattern ''{1}''."/>
     </module>
     <module name="MemberName">
+      <property name="applyToPrivate" value="false"/>
       <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
       <message key="name.invalidPattern" value="Member name ''{0}'' must match pattern ''{1}''."/>
     </module>
@@ -177,10 +157,13 @@ Checkstyle configurartion that checks the Google coding conventions (https://goo
     <module name="SingleLineJavadoc"/>
     <module name="WhitespaceAfter"/>
     <module name="EmptyCatchBlock"/>
-    <module name="PackageName">
-      <property name="severity" value="ignore"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    <module name="MemberName">
+      <property name="applyToPublic" value="false"/>
+      <property name="applyToProtected" value="false"/>
+      <property name="applyToPackage" value="false"/>
+      <property name="format" value="^[_a-z][a-zA-Z0-9]*$"/>
     </module>
+    <module name="AvoidNestedBlocks"/>
   </module>
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>

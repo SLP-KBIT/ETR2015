@@ -4,7 +4,7 @@ import Boundly.Mode.Mode;
 
 public class ExecMenu extends Menu
 {
-  private Mode selectedMode;
+  private Mode _selectedMode;
 
   public ExecMenu()
   {
@@ -13,9 +13,9 @@ public class ExecMenu extends Menu
 
   public ExecMenu(Mode selectedMode)
   {
-    if ( selectedMode != null )
+    if ( _selectedMode == null )
     {
-      this.selectedMode = selectedMode;
+      _selectedMode = selectedMode;
     }
   }
 
@@ -23,10 +23,10 @@ public class ExecMenu extends Menu
   {
     try
     {
-      System.out.println("execute mode of " + selectedMode.getClass());
-      this.selectedMode.exec();
+      System.out.println("execute mode of " + _selectedMode.getClass());
+      _selectedMode.exec();
     }
-    catch (NullPointerException e)
+    catch ( NullPointerException e )
     {
       System.out.println("failure excute : " + e.toString());
     }

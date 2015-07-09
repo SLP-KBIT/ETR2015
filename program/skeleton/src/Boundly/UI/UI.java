@@ -3,18 +3,17 @@ package Boundly.UI;
 import Boundly.Menu.ExecMenu;
 import Boundly.Menu.SelectMenu;
 import Boundly.Mode.Mode;
-import Controller.RunRecoder.RunRecoder;
 
 public class UI
 {
-  private static SelectMenu selectMenu;
-  private static ExecMenu execMenu;
+  private static SelectMenu _selectMenu;
+  private static ExecMenu _execMenu;
 
   public static void main(String[] args)
   {
-    selectMenu = new SelectMenu();
-    Mode mode = selectMenu.select();
-    execMenu = new ExecMenu(mode);
-    execMenu.exec();
+    _selectMenu = new SelectMenu();
+    Mode mode = _selectMenu.select();
+    _execMenu = new ExecMenu(mode);
+    _execMenu.exec();
   }
 }
