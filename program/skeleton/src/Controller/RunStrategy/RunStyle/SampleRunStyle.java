@@ -14,6 +14,5 @@ public class SampleRunStyle extends RunStyle
   {
     EV3 ev3 = Runner.getEV3();
     System.out.println("transform robot by " + this.getClass());
-    ev3.tailMotor.setLotate(60);
   }
 }

@@ -2,9 +2,9 @@ package Entity.EV3.Devise.OutputDevise.Motor;
 
 public final class TailMotor extends Motor
 {
-  public TailMotor(int port)
+  public TailMotor()
   {
-    super(port);
+    super('C');
   }
 
   public void setSpeed(int speed)

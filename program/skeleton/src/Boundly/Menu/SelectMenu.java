@@ -5,7 +5,7 @@ import Boundly.Mode.ModeCreator;
 
 public class SelectMenu extends Menu
 {
-  private String modeName;
+  private String _modeName;
 
   public SelectMenu()
   {
@@ -14,9 +14,9 @@ public class SelectMenu extends Menu
 
   public Mode select()
   {
-    this.modeName = SelectMenu.selectModeName();
-    System.out.println("modename: " + modeName);
-    Mode mode = ModeCreator.create(this.modeName);
+    _modeName = SelectMenu.selectModeName();
+    System.out.println("modename: " + _modeName);
+    Mode mode = ModeCreator.create(_modeName);
     return mode;
   }
 
