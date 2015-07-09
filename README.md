@@ -65,3 +65,4 @@ ex. (kattsun:usecase:01) アクターとしてスターターを追記
   $ gulp
   ```
 
+詳しくは [http://qiita.com/maxmellon/items/08c8162f3769ce71dbd3](http://qiita.com/maxmellon/items/08c8162f3769ce71dbd3)
