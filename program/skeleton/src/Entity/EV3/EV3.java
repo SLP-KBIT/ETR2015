@@ -9,25 +9,18 @@ import Entity.EV3.Devise.InputDevise.Sensor.GyroSensor;
 public class EV3
 {
   // motor
-  private RunMotor _leftMotor;
-  private RunMotor _rightMotor;
-  private TailMotor _tailMotor;
+  private static final RunMotor _leftMotor = new RunMotor('A');
+  private static final RunMotor _rightMotor = new RunMotor('B');
+  private static final TailMotor _tailMotor = new TailMotor();
+  // encoder
+  private static final Encoder _leftEncoder = new Encoder('A');
+  private static final Encoder _rightEncoder = new Encoder('B');
   // sensor
-  private LightSensor _lightSensor;
-  private GyroSensor _gyroSensor;
-  private Encoder _leftEncoder;
-  private Encoder _rightEncoder;
+  private static final LightSensor _lightSensor = new LightSensor();
+  private static final GyroSensor _gyroSensor = new GyroSensor();
 
-  public EV3()
-  {
-    _leftMotor = new RunMotor('A');
-    _rightMotor = new RunMotor('B');
-    _tailMotor = new TailMotor();
-    _lightSensor = new LightSensor();
-    _gyroSensor = new GyroSensor();
-    _leftEncoder = new Encoder('A');
-    _rightEncoder = new Encoder('B');
-  }
+
+  public EV3() { }
 
   //---- setter
   public void setTail(int lotate)
