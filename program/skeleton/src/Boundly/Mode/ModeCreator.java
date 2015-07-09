@@ -1,9 +1,12 @@
 package Boundly.Mode;
 
-public class ModeCreator {
-  public static Mode create(String modeName) {
+public class ModeCreator
+{
+  public static Mode create(String modeName)
+  {
     Mode mode = null;
-    switch ( modeName ) {
+    switch ( modeName )
+    {
       case "Run" :
         mode = new RunMode();
         break;

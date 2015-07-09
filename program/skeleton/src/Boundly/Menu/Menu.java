@@ -1,7 +1,9 @@
 package Boundly.Menu;
 
-public abstract class Menu {
-  public Menu() {
-        
+public abstract class Menu
+{
+  public Menu()
+  {
+
   }
 }

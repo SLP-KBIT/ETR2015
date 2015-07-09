@@ -1,25 +1,26 @@
 package Controller.RunStrategy;
 
-import Controller.RunStrategy.RunMethod.RunMethod;
-import Controller.RunStrategy.RunMethod.SampleRunMethod;
+import Controller.RunStrategy.RunMovement.RunMovement;
+import Controller.RunStrategy.RunMovement.SampleRunMovement;
 import Controller.RunStrategy.RunStyle.RunStyle;
 import Controller.RunStrategy.RunStyle.SampleRunStyle;
-import Entity.EV3.EV3;
 
 public class SampleStrategy extends RunStrategy {
-  public SampleStrategy(EV3 ev3) {
-    super(ev3);
+  public SampleStrategy()
+  {
+    super();
   }
 
-  public SampleStrategy(EV3 ev3, int defaultSpeed) {
-    super(ev3);
+  public SampleStrategy(int defaultSpeed)
+  {
+    super();
     this.defaultSpeed = defaultSpeed;
   }
 
   public void exec() {
     System.out.println("execute strategy of " + this.getClass());
-    RunMethod runMethod = new SampleRunMethod(ev3);
-    RunStyle runStyle = new SampleRunStyle(ev3);
+    RunMovement runMethod = new SampleRunMovement();
+    RunStyle runStyle = new SampleRunStyle();
     int turn = runMethod.calcTreshold();
     runMethod.execRun(turn, this.defaultSpeed);
     runStyle.transform();
