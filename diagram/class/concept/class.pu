@@ -83,41 +83,41 @@ RunMode   "1" ..> "*" Runner : <<use>>
 DebugMode "1" ..> "*" Runner : <<use>>
 
 Runner "1" o--> "*" RunStrategy
-RunStrategy "1" o-left-> "*" RunMethod
+RunStrategy "1" o-left-> "*" Movement
 RunStrategy "1" o--> "*" RunStyle
 
 RunStrategy <|-- NormalAreaRunStrategy
 RunStrategy <|-- HardAreaRunStrategy
 RunStrategy <|-- ExceptionRunStrategy
-RunStrategy <|-- TargetStraightMethod
+RunStrategy <|-- TargetStraightMovement
 
 class Runner {
   +run()
 }
 
-abstract RunMethod {
+abstract Movement {
   +turn
   +speed
   +{abstract}calc_trun()
   +{abstract}run(turn, speed)
 }
 
-class MAIMAIMethod {
+class MAIMAIMovement {
   +calc_trun() : int
   +run(turn, speed)
 }
 
-class TargetStraightMethod {
+class TargetStraightMovement {
   +calc_trun() : int
   +run(turn, speed)
 }
 
-class PIDMethod {
+class PIDMovement {
   +run(turn, speed)
 }
 
-RunMethod <|-- MAIMAIMethod
-RunMethod <|-- PIDMethod
+Movement <|-- MAIMAIMovement
+Movement <|-- PIDMovement
 
 abstract RunStyle {
   +change(style:RunStyle)
