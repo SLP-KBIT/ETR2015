@@ -1,10 +1,10 @@
 package Entity.EV3.Devise.InputDevise.Sensor;
 
-public class JyroSensor extends Sensor
+public class GyroSensor extends Sensor
 {
-  public JyroSensor(char port)
+  public GyroSensor()
   {
-    super(port);
+    super();
   }
 
   public int getValue()
