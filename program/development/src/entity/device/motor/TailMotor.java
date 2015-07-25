@@ -9,11 +9,11 @@ public final class TailMotor extends Motor
 
   public void setSpeed(int speed)
   {
-    System.out.println("set speed : " + String.valueOf(speed));
+    this.motor.setSpeed(speed);
   }
-  
-  public void setLotate(int lotate)
+
+  public void setLotate(int angle)
   {
-    System.out.println("set lotate : " + String.valueOf(lotate));
+    this.motor.rotate(angle);
   }
 }

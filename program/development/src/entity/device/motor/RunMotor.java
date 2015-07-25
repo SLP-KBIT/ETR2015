@@ -2,18 +2,29 @@ package entity.device.motor;
 
 public final class RunMotor extends Motor 
 {
-  public RunMotor(int port)
+  public RunMotor(char port)
   {
     super(port);
   }
 
-  public void setSpeed(int speed)
+  public void setSpeed(int speed, Direction direction)
   {
-    System.out.println("set speed : " + String.valueOf(speed));
+    switch ( direction )
+    {
+      case Forward :
+        this.motor.forward();
+        break;
+      case Backword :
+        this.motor.backward();
+        break;
+      default :
+        this.motor.stop();
+        break;
+    }
   }
 
-  public void setLotate(int lotate)
+  public void setLotate(int angle)
   {
-    System.out.println("set rotate : " + String.valueOf(lotate));
+    this.motor.rotate(angle);
   }
 }

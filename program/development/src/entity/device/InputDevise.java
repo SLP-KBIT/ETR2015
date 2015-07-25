@@ -1,8 +1,7 @@
 package entity.device;
 
-public abstract class InputDevise extends Devise
+public interface InputDevise
 {
-  
   public abstract int getValue();
 
   public abstract float getFloatValue();
