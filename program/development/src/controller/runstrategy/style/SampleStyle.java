@@ -2,6 +2,7 @@ package controller.runstrategy.style;
 
 import controller.Runner;
 import entity.EV3;
+import entity.device.motor.TailMotor;
 
 public class SampleStyle extends Style
 {
@@ -13,6 +14,7 @@ public class SampleStyle extends Style
   public void transform()
   {
     EV3 ev3 = Runner.getEV3();
-    //System.out.println("transform robot by " + this.getClass());
+    TailMotor tail = ev3.getTailMotor();
+    tail.setLotate(75);
   }
 }

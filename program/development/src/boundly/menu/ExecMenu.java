@@ -23,7 +23,6 @@ public class ExecMenu extends Menu
   {
     try
     {
-      System.out.println("execute mode of " + _selectedMode.getClass());
       _selectedMode.exec();
     }
     catch ( NullPointerException e )

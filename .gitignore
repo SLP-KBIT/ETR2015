@@ -7,10 +7,11 @@ RemoteSystemsTempFiles
 /json
 /build/*
 /bin
+/*.exe
+/*.exe.stackdump
 # disable
 !/build/diagram/activity
 !/build/diagram/class
 !/build/diagram/object
 !/build/diagram/sequence
 !/build/diagram/usecase
-

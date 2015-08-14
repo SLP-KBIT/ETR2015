@@ -11,17 +11,15 @@ public final class RunMotor extends Motor
   {
     switch ( direction )
     {
-      case Forward :
-        this.motor.setSpeed(speed);
+      case Forward:
+        this.motor.setSpeed(speed * 10);
         this.motor.forward();
         break;
-      case Backword :
-        this.motor.setSpeed(speed);
+      case Backword:
+        this.motor.setSpeed(speed * 10);
         this.motor.backward();
         break;
-      default :
-        this.motor.setSpeed(0);
-        this.motor.stop();
+      default:
         break;
     }
   }

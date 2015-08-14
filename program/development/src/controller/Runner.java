@@ -1,6 +1,8 @@
 package controller;
 
 import controller.runstrategy.RunStrategy;
+
+
 import controller.runstrategy.RunStrategyCreator;
 import entity.EV3;
 
@@ -10,7 +12,6 @@ public class Runner
 
   public static void run()
   {
-    System.out.println("runninng...");
     RunStrategy strategy = RunStrategyCreator.create();
     strategy.exec();
   }

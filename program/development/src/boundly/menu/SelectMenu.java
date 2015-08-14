@@ -15,7 +15,6 @@ public class SelectMenu extends Menu
   public Mode select()
   {
     _modeName = SelectMenu.selectModeName();
-    System.out.println("modename: " + _modeName);
     Mode mode = ModeCreator.create(_modeName);
     return mode;
   }

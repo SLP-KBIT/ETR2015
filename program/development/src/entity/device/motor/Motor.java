@@ -50,7 +50,6 @@ public abstract class Motor extends Devise implements OutputDevise
 
   public void setValue(int value)
   {
-    RegulatedMotor motor = this.getMotor();
-    motor.setSpeed(value);
+    this.motor.setSpeed(value);
   }
 }

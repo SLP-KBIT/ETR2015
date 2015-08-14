@@ -9,7 +9,6 @@ public class RunStrategyCreator
   {
     RunRecoder recoder = new RunRecoder();
     Area area = recoder.getArea();
-    System.out.println("create strategy ");
     switch ( area )
     {
       case No1 :
