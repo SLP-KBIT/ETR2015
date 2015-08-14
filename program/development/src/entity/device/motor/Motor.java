@@ -3,32 +3,39 @@ package entity.device.motor;
 import entity.device.Devise;
 import entity.device.OutputDevise;
 import lejos.hardware.motor.NXTRegulatedMotor;
+import lejos.robotics.RegulatedMotor;
 
 public abstract class Motor extends Devise implements OutputDevise
 {
   public final char motorPort;
-  protected NXTRegulatedMotor motor;
+  protected RegulatedMotor motor;
 
   public Motor(char port)
   {
     this.motorPort = port;
     switch ( port )
     {
-      case 'A' :
+      case 'A':
         this.motor = lejos.hardware.motor.Motor.A;
         break;
-      case 'B' :
+      case 'B':
         this.motor = lejos.hardware.motor.Motor.B;
         break;
-      case 'C' :
+      case 'C':
         this.motor = lejos.hardware.motor.Motor.C;
         break;
-      case 'D' :
+      case 'D':
         this.motor = lejos.hardware.motor.Motor.D;
         break;
-      default :
+      default:
         break;
     }
+  }
+  
+  public void init()
+  {
+    this.motor.resetTachoCount();
+    this.motor.rotateTo(0);
   }
 
   public void setSpeed(int speed) {}
@@ -39,11 +46,11 @@ public abstract class Motor extends Devise implements OutputDevise
   
   public void stop() { this.motor.stop(); }
   
-  private NXTRegulatedMotor getMotor() { return this.motor; }
+  private RegulatedMotor getMotor() { return this.motor; }
 
   public void setValue(int value)
   {
-    NXTRegulatedMotor motor = this.getMotor();
+    RegulatedMotor motor = this.getMotor();
     motor.setSpeed(value);
   }
 }

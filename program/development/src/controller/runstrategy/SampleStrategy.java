@@ -17,13 +17,15 @@ public class SampleStrategy extends RunStrategy {
     this.defaultSpeed = defaultSpeed;
   }
 
-  public void exec() {
-    System.out.println("execute strategy of " + this.getClass());
-    Movement runMethod = new SampleMovement();
+  public void exec()
+  {
+    // System.out.println("execute strategy of " + this.getClass());
+    Movement movement = new SampleMovement();
     Style runStyle = new SampleStyle();
-    int turn = runMethod.calcTreshold();
-    runMethod.execRun(turn, this.defaultSpeed);
+    int turn = movement.calcTreshold();
+    movement.execRun(turn, this.defaultSpeed);
     runStyle.transform();
+    
     // TODO: ライン未検出，転倒時の例外を投げる
     // if ( ~~~ ) {
     //     throw new LineNotFoundException();

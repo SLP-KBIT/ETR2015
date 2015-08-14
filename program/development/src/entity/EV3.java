@@ -1,13 +1,14 @@
 package entity;
 
+import entity.device.motor.Direction;
 import entity.device.motor.RunMotor;
 import entity.device.motor.TailMotor;
 
 public class EV3
 {
   // motor
-  private static final RunMotor _leftMotor = new RunMotor('A');
-  private static final RunMotor _rightMotor = new RunMotor('B');
+  private static final RunMotor _leftMotor = new RunMotor('B');
+  private static final RunMotor _rightMotor = new RunMotor('C');
   private static final TailMotor _tailMotor = new TailMotor();
   // encoder
   //private static final Encoder _leftEncoder = new Encoder('A');
@@ -20,10 +21,17 @@ public class EV3
   public EV3() {}
 
   //---- setter
+  public void init()
+  {
+    _leftMotor.init();
+    _rightMotor.init();
+    _tailMotor.init();
+  }
+  
   public void setForword(int speed, int turn)
   {
-    _leftMotor.setSpeed(speed - turn);
-    _rightMotor.setSpeed(speed + turn);
+    _leftMotor.setSpeed(speed - turn, Direction.Forward);
+    _rightMotor.setSpeed(speed + turn, Direction.Forward);
   }
 
   //--- getter
@@ -35,9 +43,4 @@ public class EV3
   //public Encoder getLeftEncoder() { return _leftEncoder; }
   // RightEncoder
   //public Encoder getRightEncoder() { return _rightEncoder; }
-  // getAvetageLotate
-  //public int getAveLotate()
-  //{
-  //  return (_leftEncoder.getValue() + _rightEncoder.getValue()) / 2;
-  //}
 }

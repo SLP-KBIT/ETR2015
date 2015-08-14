@@ -27,7 +27,7 @@ public class RunRecoder
   public Area getArea()
   {
     // TODO: 走行距離に応じたエリアを返却する
-    System.out.println("get area");
+    //System.out.println("get area");
     return Area.No1;
   }
 

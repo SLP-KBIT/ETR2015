@@ -4,7 +4,7 @@ public final class TailMotor extends Motor
 {
   public TailMotor()
   {
-    super('C');
+    super('A');
   }
 
   public void setSpeed(int speed)
